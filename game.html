@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="mk">
+
+<head>
+	<title>Demo</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="Demo project">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="game.css">
+	<script src="jquery.min.js"></script>
+</head>
+
+<body>
+
+	<div id="game" class="container">
+
+		<div class="home-screen menu-screen">
+			<div class="menu-box">
+
+				<div class="home-title">
+					<h1>Mixed Letters</h1>
+				</div>
+				<div class="center-img"><img src="assets/ui/flower.png" alt="flower"></div>
+				<div id="infoBox" class="home-info-box">
+					<div>Info</div>
+					<hr />
+					<p>
+						Made by: Mohsin Uddin <br>
+						Location: Dhaka, Bangladesh 7930.<br>
+						Date: 25/8/2021
+					</p>
+				</div>
+
+				<div id="setBox" class="home-info-box">
+					<div class="set-box">
+						<div class="set-btn-box">
+							<div>Settings</div>
+							<hr>
+							<button class="game-btn sound-btn" onclick="soundToggle()"><img src="assets/ui/sound_on.png"
+									alt="">Sound On</button>
+							<button class="game-btn music-btn" onclick="musicToggle()"><img src="assets/ui/music_on.png"
+									alt="">Music On</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="home-btn-box">
+					<button class="game-btn" onclick="showSettings()"><img src="assets/ui/settings.png" alt=""></button>
+					<button class="game-btn" onclick="showInfo()"><img src="assets/ui/info.png" alt=""></button>
+					<button class="game-btn" onclick="modeScreen()"><img src="assets/ui/play.png" alt=""> PLAY</button>
+				</div>
+
+			</div>
+		</div>
+		<!-- end home-screen -->
+
+		<div class="mode-screen  menu-screen">
+			<div class="menu-box">
+				<div class="mode-btn-box">
+					<div class="game-score"> Select Game Mode</div>
+					<hr>
+					<button class="game-btn" onclick="startGame(0)"><img src="assets/ui/play.png" alt=""> Easy</button>
+					<button class="game-btn" onclick="startGame(1)"><img src="assets/ui/play.png" alt=""> Normal</button>
+					<button class="game-btn" onclick="startGame(2)"><img src="assets/ui/play.png" alt=""> Hard</button>
+					<br>
+					<hr>
+					<button class="game-btn" onclick="backToHome()"><img src="assets/ui/back.png" alt=""> Back</button>
+					<br>
+					<progress id="loading" value="0" max="100" style="width: 100%; display: none;"></progress>
+				</div>
+			</div>
+		</div>
+		<!-- end mode-screen -->
+
+		<div class="game-screen">
+
+			<div class="top-menu">
+				<div>
+					<button id="menuBtn" class="game-btn" onclick="g.openMenu()"><img src="assets/ui/menu.png"
+							alt=""><span>Menu</span></button>
+					<div class="game-menu"></div>
+				</div>
+				<div id="time" class="game-score">Time: 1:30</div>
+				<div id="score" class="game-score">Score: 0</div>
+				<button id="pauseBtn" class="game-btn" onclick="g.pauseGame()"><img src="assets/ui/pause.png"
+						alt=""><span>Pause</span></button>
+			</div>
+
+			<div class="game-play">
+				<div class="img-box">
+					<img id="display-image" src="assets/animals/Asset 17animal.png" alt="">
+				</div>
+				<div class="drop-boxes"></div>
+				<div class="drag-boxes"></div>
+			</div>
+
+			<div id="pauseModal" class="modal">
+				<div class="modal-content">
+					<div class="modal-btn-box">
+						<div class="game-score"> Game Paused </div>
+						<hr>
+						<button class="game-btn" class="game-btn" onclick="g.resumeGame()"><img src="assets/ui/play.png"
+								alt=""> Resume</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="levelupModal" class="modal">
+				<div class="modal-content">
+					<div class="modal-btn-box">
+						<div class="game-score"> You Win! </div>
+						<hr>
+						<div id="gScore" class="game-score"> Your Score: 0</div>
+						<hr>
+						<button class="game-btn" class="game-btn" onclick="menuScreen()"><img src="assets/ui/play.png" alt="">
+							Back To Main Menu</button>
+					</div>
+				</div>
+			</div>
+
+			<div id="menuModal" class="modal">
+				<div class="modal-content">
+					<button type="button" class="modal-close" onclick="g.closeMenu()">&times;</button>
+					<div class="modal-btn-box">
+						<div class="game-score"> Menu </div>
+						<hr>
+						<button class="game-btn sound-btn" onclick="soundToggle()"><img src="assets/ui/sound_on.png" alt="">
+							Sound On</button>
+						<button class="game-btn music-btn" onclick="musicToggle()"><img src="assets/ui/music_on.png" alt="">
+							Music On</button>
+						<button class="game-btn" onclick="menuScreen()"><img src="assets/ui/home.png" alt=""> Main
+							Menu</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="btm-menu">
+				<div class="btm-menu-box">
+					<button id="retryBtn" class="game-btn" onclick="g.retry()"><img src="assets/ui/retry.png" alt="">
+						Retry</button>
+					<button id="nextBtn" class="game-btn" onclick="g.next()"><img src="assets/ui/play.png" alt="">
+						Next</button>
+				</div>
+			</div>
+		</div>
+		<!-- end game-screen -->
+
+	</div>
+	<!-- end game  -->
+	<script src="states.js"></script>
+	<script src="game.js"></script>
+</body>
+
+</html>
